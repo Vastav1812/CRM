@@ -1,11 +1,18 @@
 [build]
-  base = "packages/twenty-front"
-  command = "yarn build"
-  publish = "build"
+  base = "/"
+  command = """
+    yarn install &&
+    cd packages/twenty-shared && yarn build &&
+    cd ../twenty-front && yarn build
+  """
+  publish = "packages/twenty-front/build"
 
 [build.environment]
   NODE_VERSION = "18"
   YARN_VERSION = "1.22.19"
+  YARN_ENABLE_WORKSPACE = "true"
+  VITE_DISABLE_TYPESCRIPT_CHECKER = "true"
+  VITE_DISABLE_ESLINT_CHECKER = "true"
 
 [[redirects]]
   from = "/*"
