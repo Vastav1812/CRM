@@ -1,7 +1,6 @@
 [build]
   base = "/"
   command = """
-    yarn config set enableWorkspaceConformance true &&
     yarn install --frozen-lockfile --legacy-peer-deps &&
     cd packages/twenty-shared && yarn build &&
     cd ../twenty-front && yarn build
@@ -15,6 +14,7 @@
   VITE_DISABLE_ESLINT_CHECKER = "true"
   NPM_FLAGS = "--legacy-peer-deps"
   NODE_ENV = "development"
+  YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
 
 [[redirects]]
   from = "/*"
