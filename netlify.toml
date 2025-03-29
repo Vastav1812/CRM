@@ -1,20 +1,24 @@
 [build]
   base = "/"
   command = """
-    yarn install --frozen-lockfile --legacy-peer-deps &&
-    cd packages/twenty-shared && yarn build &&
-    cd ../twenty-front && yarn build
+    yarn install &&
+    yarn workspace twenty-shared build &&
+    yarn workspace twenty-front build
   """
   publish = "packages/twenty-front/build"
 
 [build.environment]
   NODE_VERSION = "18"
-  YARN_VERSION = "1.22.19"
+  YARN_VERSION = "4.0.2"
   VITE_DISABLE_TYPESCRIPT_CHECKER = "true"
   VITE_DISABLE_ESLINT_CHECKER = "true"
   NPM_FLAGS = "--legacy-peer-deps"
   NODE_ENV = "development"
   YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
+  YARN_ENABLE_GLOBAL_CACHE = "false"
+  YARN_ENABLE_MIRROR = "false"
+  YARN_NODE_LINKER = "node-modules"
+  YARN_NM_MODE = "hardlinks-local"
 
 [[redirects]]
   from = "/*"
