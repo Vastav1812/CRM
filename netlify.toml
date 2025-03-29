@@ -1,19 +1,20 @@
 [build]
   base = "/"
   command = """
-    NODE_ENV=development yarn install &&
+    yarn config set enableWorkspaceConformance true &&
+    yarn install --frozen-lockfile &&
     cd packages/twenty-shared && yarn build &&
-    cd ../twenty-front && NODE_ENV=production yarn build
+    cd ../twenty-front && yarn build
   """
   publish = "packages/twenty-front/build"
 
 [build.environment]
   NODE_VERSION = "18"
   YARN_VERSION = "1.22.19"
-  YARN_ENABLE_WORKSPACE = "true"
   VITE_DISABLE_TYPESCRIPT_CHECKER = "true"
   VITE_DISABLE_ESLINT_CHECKER = "true"
   NPM_FLAGS = "--legacy-peer-deps"
+  NODE_ENV = "development"
 
 [[redirects]]
   from = "/*"
