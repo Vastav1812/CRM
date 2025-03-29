@@ -2,7 +2,7 @@
   base = "/"
   command = """
     yarn config set enableWorkspaceConformance true &&
-    yarn install --frozen-lockfile &&
+    yarn install --frozen-lockfile --legacy-peer-deps &&
     cd packages/twenty-shared && yarn build &&
     cd ../twenty-front && yarn build
   """
