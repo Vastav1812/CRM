@@ -2,7 +2,6 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { SettingsNavigationDrawerItems } from '@/settings/components/SettingsNavigationDrawerItems';
-import { SupportDropdown } from '@/support/components/SupportDropdown';
 import {
   NavigationDrawer,
   NavigationDrawerProps,
@@ -46,7 +45,6 @@ export const AppNavigationDrawer = ({
     : {
         title: currentWorkspace?.displayName ?? '',
         children: <MainNavigationDrawerItems />,
-        footer: <SupportDropdown />,
       };
 
   return (

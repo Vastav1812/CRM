@@ -8,7 +8,7 @@ export const opportunitiesByStageView = (
   objectMetadataStandardIdToIdMap: ObjectMetadataStandardIdToIdMap,
 ) => {
   return {
-    name: 'By Stage',
+    name: 'Sales Pipeline',
     objectMetadataId:
       objectMetadataStandardIdToIdMap[STANDARD_OBJECT_IDS.opportunity].id,
     type: 'kanban',

@@ -7,6 +7,7 @@ import { CurrentWorkspaceMemberFavoritesFolders } from '@/favorites/components/C
 import { WorkspaceFavorites } from '@/favorites/components/WorkspaceFavorites';
 import { NavigationDrawerOpenedSection } from '@/object-metadata/components/NavigationDrawerOpenedSection';
 import { RemoteNavigationDrawerSection } from '@/object-metadata/components/RemoteNavigationDrawerSection';
+import { SupportDropdown } from '@/support/components/SupportDropdown';
 import { SettingsPath } from '@/types/SettingsPath';
 import { NavigationDrawerItem } from '@/ui/navigation/navigation-drawer/components/NavigationDrawerItem';
 import { NavigationDrawerSection } from '@/ui/navigation/navigation-drawer/components/NavigationDrawerSection';
@@ -63,6 +64,7 @@ export const MainNavigationDrawerItems = () => {
             }}
             Icon={IconSettings}
           />
+          <SupportDropdown />
         </StyledMainSection>
       )}
       <ScrollWrapper
