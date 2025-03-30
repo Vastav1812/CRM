@@ -378,7 +378,7 @@
   "scripts": {
     "start": "npx concurrently --kill-others 'npx nx run-many -t start -p twenty-server twenty-front' 'npx wait-on tcp:3000 && npx nx run twenty-server:worker'",
     "preinstall": "npm install -g node-gyp",
-    "build": "yarn install --ignore-scripts && yarn nx run-many --target=build --projects=twenty-shared,twenty-server --parallel=false",
+    "build": "yarn install && yarn nx run-many --target=build --projects=twenty-shared,twenty-server --parallel=false",
     "build:server": "yarn nx run twenty-server:build",
     "build:shared": "yarn nx run twenty-shared:build",
     "postinstall": "yarn nx reset"
