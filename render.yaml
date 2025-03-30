@@ -1,35 +1,23 @@
 services:
 - type: web
-  name: server
-  runtime: image
-  image:
-    url: twentycrm/twenty:latest
-  dockerCommand: "sh -c ./scripts/render-run.sh"
-  autoDeploy: false
-  plan: standard
+  name: twenty-server
+  env: node
+  rootDir: packages/twenty-server
+  buildCommand: yarn install && yarn build
+  startCommand: yarn start:prod
   envVars:
-    - key: FRONT_BASE_URL
-      fromService:
-        name: server
-        type: web
-        envVarKey: RENDER_EXTERNAL_URL
-    - key: SERVER_URL
-      fromService:
-        name: server
-        type: web
-        envVarKey: RENDER_EXTERNAL_URL
-    - key: APP_SECRET
-      generateValue: true
-    - key: PG_DATABASE_HOST
-      fromService:
-        name: twenty_postgres
-        type: pserv
-        property: host
-    - key: PG_DATABASE_PORT
-      fromService:
-        name: twenty_postgres
-        type: pserv
-        property: port
+    - key: NODE_ENV
+      value: production
+    - key: PORT
+      value: 3000
+    - key: PG_DATABASE_URL
+      value: postgresql://neondb_owner:npg_dH6ROIJBZDz5@ep-rapid-hat-a5il4l0v-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require
+    - key: FRONT_DOMAIN
+      value: twenty-vastav1812.netlify.app
+    - key: DEFAULT_WORKSPACE_LOGO
+      value: https://twenty.com/img/logo-square-dark.png
+    - key: DEFAULT_WORKSPACE_NAME
+      value: Twenty
 - type: worker
   name: worker
   runtime: image
