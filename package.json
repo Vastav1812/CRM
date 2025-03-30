@@ -184,7 +184,7 @@
     "rxjs": "^7.8.0",
     "scroll-into-view": "^1.16.2",
     "semver": "^7.5.4",
-    "sharp": "^0.32.1",
+    "sharp": "0.32.6",
     "slash": "^5.1.0",
     "stripe": "^17.3.1",
     "ts-key-enum": "^2.0.12",
@@ -367,9 +367,10 @@
   "scripts": {
     "start": "npx concurrently --kill-others 'npx nx run-many -t start -p twenty-server twenty-front' 'npx wait-on tcp:3000 && npx nx run twenty-server:worker'",
     "preinstall": "npm install -g node-gyp",
-    "build": "yarn nx run-many -t build -p twenty-shared twenty-server",
+    "build": "yarn install --frozen-lockfile && yarn nx run-many --target=build --projects=twenty-shared,twenty-server --parallel=false",
     "build:server": "yarn nx run twenty-server:build",
-    "build:shared": "yarn nx run twenty-shared:build"
+    "build:shared": "yarn nx run twenty-shared:build",
+    "postinstall": "yarn nx reset"
   },
   "workspaces": {
     "packages": [
