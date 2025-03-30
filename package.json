@@ -19,6 +19,7 @@
     "@floating-ui/react": "^0.24.3",
     "@google-cloud/local-auth": "2.1.0",
     "@graphiql/plugin-explorer": "^1.0.2",
+    "@graphiql/react": "^0.19.3",
     "@graphql-tools/schema": "^10.0.0",
     "@hello-pangea/dnd": "^16.2.0",
     "@hookform/resolvers": "^3.1.1",
@@ -198,7 +199,17 @@
     "uuid": "^9.0.0",
     "vite-tsconfig-paths": "^4.2.1",
     "xlsx-ugnis": "^0.19.3",
-    "zod": "3.23.8"
+    "zod": "3.23.8",
+    "@storybook/components": "^7.6.7",
+    "@storybook/core-events": "^7.6.7",
+    "@storybook/manager-api": "^7.6.7",
+    "@storybook/preview-api": "^7.6.7",
+    "@storybook/theming": "^7.6.7",
+    "@storybook/types": "^7.6.7",
+    "@types/inquirer": "^9.0.7",
+    "prop-types": "^15.8.1",
+    "scheduler": "^0.23.0",
+    "webpack": "^5.89.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
@@ -367,7 +378,7 @@
   "scripts": {
     "start": "npx concurrently --kill-others 'npx nx run-many -t start -p twenty-server twenty-front' 'npx wait-on tcp:3000 && npx nx run twenty-server:worker'",
     "preinstall": "npm install -g node-gyp",
-    "build": "yarn install --frozen-lockfile && yarn nx run-many --target=build --projects=twenty-shared,twenty-server --parallel=false",
+    "build": "yarn install --ignore-scripts && yarn nx run-many --target=build --projects=twenty-shared,twenty-server --parallel=false",
     "build:server": "yarn nx run twenty-server:build",
     "build:shared": "yarn nx run twenty-shared:build",
     "postinstall": "yarn nx reset"
